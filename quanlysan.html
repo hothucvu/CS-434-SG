@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SportAdmin - Quản lý danh sách sân</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdcbf",
+                    "primary": "#001f7e",
+                    "secondary-fixed": "#dee2ed",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#fe9400",
+                    "surface-container-low": "#eff4ff",
+                    "surface": "#f8f9ff",
+                    "on-secondary-container": "#60656e",
+                    "on-secondary-fixed-variant": "#424750",
+                    "secondary-container": "#dee2ed",
+                    "background": "#f8f9ff",
+                    "outline-variant": "#c5c5d5",
+                    "on-secondary-fixed": "#171c23",
+                    "tertiary-container": "#633700",
+                    "secondary": "#5a5f68",
+                    "on-primary-fixed": "#001256",
+                    "primary-container": "#1a36a0",
+                    "on-primary-container": "#98a9ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-fixed": "#2d1600",
+                    "surface-container-highest": "#d3e4fe",
+                    "inverse-surface": "#213145",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-surface-variant": "#444653",
+                    "on-primary-fixed-variant": "#213ca5",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "on-surface": "#0b1c30",
+                    "tertiary-fixed-dim": "#ffb874",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#e5eeff",
+                    "surface-dim": "#cbdbf5",
+                    "tertiary": "#442400",
+                    "on-background": "#0b1c30", 
+                    "surface-tint": "#3d55be",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "outline": "#757684",
+                    "primary-fixed": "#dde1ff",
+                    "inverse-primary": "#b9c3ff",
+                    "primary-fixed-dim": "#b9c3ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#6a3b00",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#c2c6d1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "base-unit": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c5c5d5; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #757684; }
+
+        @keyframes fade-slide-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-content { animation: fade-slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .card-delay-1 { animation-delay: 0.05s; }
+        .card-delay-2 { animation-delay: 0.1s; }
+        .card-delay-3 { animation-delay: 0.15s; }
+        .card-delay-4 { animation-delay: 0.2s; }
+        .card-delay-5 { animation-delay: 0.25s; }
+        .card-delay-6 { animation-delay: 0.3s; }
+
+        button, a, .court-card, .action-icon { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        button:active, a:active, .action-icon:active { transform: scale(0.95); }
+        .court-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0, 31, 126, 0.15); }
+
+        #toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; pointer-events: none; }
+        .toast {
+            background: #001f7e; color: white; padding: 1rem 1.5rem; border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); margin-top: 0.75rem;
+            display: flex; align-items: center; gap: 0.75rem;
+            animation: fade-slide-up 0.3s ease-out; pointer-events: auto;
+        }
+
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(11,28,48,0.5); backdrop-filter: blur(2px);
+            z-index: 100; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+        .modal-box {
+            background: white; border-radius: 1rem; width: 100%; max-width: 480px;
+            max-height: 90vh; overflow-y: auto; transform: translateY(20px) scale(0.97);
+            transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+        }
+        .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+
+        .view-list .court-card:not(.add-card) {
+            display: flex !important; flex-direction: row; align-items: stretch;
+        }
+        .view-list .court-card:not(.add-card) .court-img-wrap { width: 180px; height: auto; flex-shrink: 0; }
+        .view-list#court-grid { grid-template-columns: 1fr !important; }
+
+        .filter-btn.active-filter { background: #001f7e !important; color: #fff !important; border-color: #001f7e !important; }
+        .nav-item.active-nav { background-color: #1a36a0; color: #98a9ff; font-weight: 700; }
+        .page-btn.active-page { background: #001f7e; color: #fff; }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<div id="toast-container"></div>
+
+<!-- ADD/EDIT MODAL -->
+<div class="modal-overlay" id="court-modal">
+<div class="modal-box p-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md" id="modal-title">Thêm sân mới</h3>
+<button class="text-on-surface-variant hover:text-error" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form id="court-form" class="space-y-4" onsubmit="saveCourt(event)">
+<input id="court-id" type="hidden"/>
+<div>
+<label class="text-label-md font-label-md block mb-1">Tên sân</label>
+<input id="f-name" required class="w-full border border-outline-variant rounded-lg px-4 py-2 focus:ring-primary focus:border-primary" placeholder="VD: Sân bóng đá A3" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="text-label-md font-label-md block mb-1">Loại sân</label>
+<select id="f-category" class="w-full border border-outline-variant rounded-lg px-4 py-2 focus:ring-primary focus:border-primary">
+<option value="Bóng đá">Bóng đá</option>
+<option value="Cầu lông">Cầu lông</option>
+<option value="Tennis">Tennis</option>
+</select>
+</div>
+<div>
+<label class="text-label-md font-label-md block mb-1">Trạng thái</label>
+<select id="f-status" class="w-full border border-outline-variant rounded-lg px-4 py-2 focus:ring-primary focus:border-primary">
+<option value="Đang hoạt động">Đang hoạt động</option>
+<option value="Đang bảo trì">Đang bảo trì</option>
+</select>
+</div>
+</div>
+<div>
+<label class="text-label-md font-label-md block mb-1">Chất liệu mặt sân</label>
+<input id="f-surface" required class="w-full border border-outline-variant rounded-lg px-4 py-2 focus:ring-primary focus:border-primary" placeholder="VD: Cỏ nhân tạo" type="text"/>
+</div>
+<div>
+<label class="text-label-md font-label-md block mb-1">Vị trí</label>
+<input id="f-location" required class="w-full border border-outline-variant rounded-lg px-4 py-2 focus:ring-primary focus:border-primary" placeholder="VD: Khu A - Tầng 1" type="text"/>
+</div>
+<div>
+<label class="text-label-md font-label-md block mb-1">Giá thuê / giờ (VNĐ)</label>
+<input id="f-price" required min="0" class="w-full border border-outline-variant rounded-lg px-4 py-2 focus:ring-primary focus:border-primary" placeholder="VD: 350000" type="number"/>
+</div>
+<div>
+<label class="text-label-md font-label-md block mb-1">Ảnh sân (URL, tuỳ chọn)</label>
+<input id="f-image" class="w-full border border-outline-variant rounded-lg px-4 py-2 focus:ring-primary focus:border-primary" placeholder="https://..." type="text"/>
+</div>
+<div class="flex justify-end gap-3 pt-2">
+<button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-outline-variant text-on-surface-variant hover:bg-surface-container">Hủy</button>
+<button type="submit" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary font-bold hover:brightness-110">Lưu sân</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal-overlay" id="delete-modal">
+<div class="modal-box p-6 max-w-sm">
+<h3 class="font-headline-md text-headline-md mb-2">Xóa sân?</h3>
+<p class="text-on-surface-variant mb-6">Bạn có chắc muốn xóa <span id="delete-court-name" class="font-bold"></span>? Hành động này không thể hoàn tác.</p>
+<div class="flex justify-end gap-3">
+<button onclick="closeDeleteModal()" class="px-5 py-2.5 rounded-xl border border-outline-variant text-on-surface-variant hover:bg-surface-container">Hủy</button>
+<button onclick="confirmDelete()" class="px-5 py-2.5 rounded-xl bg-error text-on-error font-bold hover:brightness-110">Xóa</button>
+</div>
+</div>
+</div>
+
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 bg-surface border-r border-outline-variant w-64 z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">SportAdmin</h1>
+<p class="text-label-md font-label-md text-on-surface-variant">Hệ thống quản lý</p>
+</div>
+<nav class="flex-1 space-y-2" id="side-nav">
+<a class="nav-item flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" data-tab="dashboard" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="font-body-md text-body-md">Tổng quan</span>
+</a>
+<a class="nav-item active-nav flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 active:scale-95" data-tab="courts" href="#">
+<span class="material-symbols-outlined">stadium</span>
+<span class="font-body-md text-body-md">Quản lý sân</span>
+</a>
+<a class="nav-item flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" data-tab="calendar" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">calendar_month</span>
+<span class="font-body-md text-body-md">Lịch đặt sân</span>
+</a>
+<a class="nav-item flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" data-tab="revenue" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">payments</span>
+<span class="font-body-md text-body-md">Doanh thu</span>
+</a>
+<a class="nav-item flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" data-tab="profile" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">person</span>
+<span class="font-body-md text-body-md">Thông tin cá nhân</span>
+</a>
+<a class="nav-item flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group" data-tab="settings" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-body-md text-body-md">Cài đặt</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container rounded-xl flex items-center gap-3 hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center text-white font-bold">AD</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Admin Sport</p>
+<p class="text-xs text-on-surface-variant">Quản trị viên</p>
+</div>
+</div>
+</aside>
+
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center h-16 px-8 ml-64 w-[calc(100%-16rem)] bg-surface-container-lowest border-b border-outline-variant fixed top-0 z-40">
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full w-96 border border-transparent transition-all duration-300 focus-within:border-primary focus-within:bg-white focus-within:shadow-md" id="search-container">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full" id="main-search" placeholder="Tìm kiếm sân, mã sân..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors active:scale-90" onclick="showToast('Bạn có 1 thông báo mới: Sân Cầu lông B2 đang bảo trì.')">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0.5 right-0.5 w-2 h-2 bg-error rounded-full ring-2 ring-white"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-90" onclick="showToast('Trung tâm trợ giúp: liên hệ admin@sportadmin.vn')">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-label-md" id="clock-time">09:41 AM</p>
+<p class="text-[10px] text-on-surface-variant" id="clock-date">24 Tháng 5, 2024</p>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Main Content -->
+<main class="ml-64 pt-16 min-h-screen p-8 opacity-0 animate-content">
+
+<!-- OTHER TAB PLACEHOLDER -->
+<div id="other-tab-view" class="hidden">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2" id="other-tab-title">Tổng quan</h2>
+<p class="text-body-md text-on-surface-variant mb-8" id="other-tab-desc">Đang phát triển...</p>
+<div class="glass-card rounded-2xl p-12 flex flex-col items-center justify-center text-center gap-4">
+<span class="material-symbols-outlined text-6xl text-outline">construction</span>
+<p class="text-on-surface-variant max-w-md">Mục này hiện chưa có dữ liệu để hiển thị. Hãy quay lại mục "Quản lý sân" để xem chức năng đầy đủ.</p>
+</div>
+</div>
+
+<!-- COURTS VIEW -->
+<div id="courts-view">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Quản lý danh sách sân</h2>
+<p class="text-body-md text-on-surface-variant mt-1">Cập nhật và theo dõi trạng thái hoạt động của hệ thống sân thể thao.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl flex items-center gap-2 font-label-md hover:brightness-110 hover:shadow-lg hover:shadow-primary/30 transition-all duration-200 active:scale-95" onclick="openAddModal()">
+<span class="material-symbols-outlined">add</span>
+                Thêm sân mới
+            </button>
+</div>
+
+<div class="glass-card p-6 rounded-2xl mb-8 flex flex-wrap items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="text-label-md font-label-md text-on-surface-variant">Loại sân:</span>
+<div class="flex gap-2" id="category-filters">
+<button class="filter-btn active-filter px-4 py-2 rounded-full border border-primary font-label-md text-sm shadow-sm" data-type="all">Tất cả</button>
+<button class="filter-btn px-4 py-2 rounded-full border border-outline-variant hover:border-primary hover:text-primary transition-colors text-on-surface-variant font-label-md text-sm bg-white" data-type="Bóng đá">Bóng đá</button>
+<button class="filter-btn px-4 py-2 rounded-full border border-outline-variant hover:border-primary hover:text-primary transition-colors text-on-surface-variant font-label-md text-sm bg-white" data-type="Cầu lông">Cầu lông</button>
+<button class="filter-btn px-4 py-2 rounded-full border border-outline-variant hover:border-primary hover:text-primary transition-colors text-on-surface-variant font-label-md text-sm bg-white" data-type="Tennis">Tennis</button>
+</div>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant hidden lg:block"></div>
+<div class="flex items-center gap-3">
+<span class="text-label-md font-label-md text-on-surface-variant">Trạng thái:</span>
+<select id="status-filter" class="bg-transparent border border-outline-variant rounded-lg px-4 py-2 font-label-md text-sm focus:ring-primary focus:border-primary transition-all">
+<option value="all">Tất cả trạng thái</option>
+<option value="Đang hoạt động">Đang hoạt động</option>
+<option value="Đang bảo trì">Đang bảo trì</option>
+</select>
+</div>
+<div class="ml-auto flex gap-2">
+<button id="grid-view-btn" class="p-2 rounded-lg border border-primary bg-primary/10 text-primary active:scale-90" onclick="setView('grid')">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button id="list-view-btn" class="p-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container active:scale-90" onclick="setView('list')">
+<span class="material-symbols-outlined">list</span>
+</button>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="court-grid"></div>
+
+<div id="empty-state" class="hidden text-center py-16">
+<span class="material-symbols-outlined text-6xl text-outline">search_off</span>
+<p class="text-on-surface-variant mt-4">Không tìm thấy sân phù hợp với bộ lọc hiện tại.</p>
+</div>
+
+<div class="mt-12 flex flex-wrap justify-between items-center gap-4">
+<p class="text-sm text-on-surface-variant">Hiển thị <span class="font-bold text-on-surface" id="count-display">0</span> trên <span class="font-bold text-on-surface" id="total-display">0</span> sân</p>
+<div class="flex gap-2" id="pagination-controls"></div>
+</div>
+</div>
+</main>
+
+<script>
+    // ---------- DATA ----------
+    let courts = [
+        {id: 1, name: "Sân bóng đá A1", category: "Bóng đá", surface: "Cỏ nhân tạo", location: "Khu A - Tầng 1", price: 350000, status: "Đang hoạt động", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxYsEKPYsfCvbVFlIlzKoqjUHNBAoAEchUlrE43OuOKnKuzjYRpSCYAMqnGxbs_YZ2r8iXe_oJVhOHKQdwqMX63OROiaAl-37ULuvhawANSr8Hyhv5O7Vv3ZB2I0GVrv1cCjNjUfqF-kDnQoaPTm7HCHDL1Lo6Q85eFNwsK6RfKFo67dhflbk5xjjVW3i3ZoD4HBdaQ7JnLWt1aCZxgXegKIuZhkQMGLi5Bfr4ctXmhBcakv1qTYHtaWhbDwhsYxcsd-oYFH4EHVs"},
+        {id: 2, name: "Sân Cầu lông B2", category: "Cầu lông", surface: "Thảm cao su", location: "Khu B - Tầng 2", price: 120000, status: "Đang bảo trì", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCvE3r10ftuFq0ygALQkU6Vupi9gWltNbWEqbrYAkt0DRNSbB1KiDEnkDpGf1rpK5H_ezuvh39OFMQNXqqD16ZXEFjzIsb1oz4MPWpuq5N3eduifpCFEk1kxMlsosrmoDL547gAXj2P3rHKm_0E7DYaJ7-KV2cyLnPb5cqk7CsOLOszKS36chCPVvhcvdPtpuPUs7qXiIVR9Id5JqIpRQX0WaOnQ6qupmJ_ISmwem5Dl_Muclzz-FjWUjUgSGbOP33xU6muDoh0tso"},
+        {id: 3, name: "Sân Tennis C1", category: "Tennis", surface: "Sân cứng", location: "Khu C - Ngoài trời", price: 250000, status: "Đang hoạt động", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBkwn96yMMZXSRrU0rj73zDIrnpVP-FDpZZ7xsNzoGc9yoogWZfMQ_WzLwPr1RKyjP-A5Mh2goifBB5ctXNDsDrHj2wFI6ex1--DD99VwtHylrRF0W_eBApKrAjogtxXXZ4GMtmvYCf1bm8bzS4swrNVV26e9ozbTuQtmh3VWZbk71SPMeYO10vSxnxhot0gQ83XKbZIIRG8Lagznkp5ct_lpjbf7FGX3cfpoDedLz3BNLTKb8BG0ggACCx9Ou2EHHdmwWk9OtW6o0"},
+        {id: 4, name: "Sân bóng đá A2", category: "Bóng đá", surface: "Cỏ nhân tạo", location: "Khu A - Tầng 1", price: 350000, status: "Đang hoạt động", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB6N40OcOCSK_E1JNdmULTc8PadJgqnilYpG2ov6pWBEnc8eW-ip6cAmtvr_WBFxTDjclPiNbNZfEV62bxdH4Pm5z7rgJNTZwVK7xLAcCcAvlHLFEyqv1aGOZgx_VYsafhBzN7DO1AYJto351wD0ZmaHTWZfx6F6otyiXf3BrcJ1j45bxB1ihsEvicFwzOWb4tHbHw_OX6kNJPI4Unumuu_DlYTkFMp-C9F8ENZij-25dun_LA9891RjxEpPvpJQmwGw4Q42Zt9tA8"},
+        {id: 5, name: "Sân Cầu lông B1", category: "Cầu lông", surface: "Thảm chuyên dụng", location: "Khu B - Tầng 2", price: 120000, status: "Đang hoạt động", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAc3_zCjNF4Xe-1Mq9lcQCAwXrST3F3ANdnI9rSuOHOoTzsBN9JuT55pxmPsQlYNiSdqn34rBufVpETBciNihNofRGgDK8UyrbmW-syKHT3iIVHm2NJjw9tbzgHIN62jhaSjUZT5TzHwbbQJS3WVzqba0UsePu3Xq5_yUQeP2bjg4ElW7gcnXjvyCTdJrQSiAnQev4g9TM7Wp-ZVTXjmMTEIEoPZjZgbN_9pFSqfsTW2Hcxi8Z75WopEZ3yDGja5U_Ly4GnfUUUYOM"}
+    ];
+    let nextId = 6;
+    let state = { category: "all", status: "all", search: "", view: "grid", page: 1 };
+    const PAGE_SIZE = 6;
+    let deleteTargetId = null;
+
+    // ---------- RENDER ----------
+    function getFiltered() {
+        return courts.filter(c => {
+            if (state.category !== "all" && c.category !== state.category) return false;
+            if (state.status !== "all" && c.status !== state.status) return false;
+            if (state.search && !c.name.toLowerCase().includes(state.search.toLowerCase())) return false;
+            return true;
+        });
+    }
+
+    function formatPrice(n) {
+        return n.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function render() {
+        const filtered = getFiltered();
+        const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+        if (state.page > totalPages) state.page = totalPages;
+        const start = (state.page - 1) * PAGE_SIZE;
+        const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+        const grid = document.getElementById('court-grid');
+        const emptyState = document.getElementById('empty-state');
+        grid.className = 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6' + (state.view === 'list' ? ' view-list' : '');
+
+        if (filtered.length === 0) {
+            grid.innerHTML = '';
+            emptyState.classList.remove('hidden');
+        } else {
+            emptyState.classList.add('hidden');
+            grid.innerHTML = pageItems.map((c, i) => cardHtml(c, i)).join('') + addCardHtml();
+        }
+
+        document.getElementById('count-display').innerText = pageItems.length;
+        document.getElementById('total-display').innerText = filtered.length;
+        renderPagination(totalPages);
+    }
+
+    function cardHtml(c, i) {
+        const statusColor = c.status === 'Đang hoạt động' ? 'green' : 'red';
+        const pulse = c.status === 'Đang hoạt động' ? ' animate-pulse' : '';
+        const delay = (i % 6) + 1;
+        return `
+        <div class="court-card opacity-0 animate-content card-delay-${delay} bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden group">
+            <div class="relative h-48 w-full overflow-hidden court-img-wrap">
+                <div class="bg-cover bg-center w-full h-full transform group-hover:scale-110 transition-transform duration-700" style="background-image:url('${c.image || 'https://placehold.co/400x300?text=San'}')"></div>
+                <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 rounded-full bg-${statusColor}-100 text-${statusColor}-700 text-xs font-bold flex items-center gap-1 backdrop-blur-sm shadow-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-${statusColor}-600${pulse}"></span>
+                        ${c.status}
+                    </span>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="court-name font-headline-md text-headline-md text-on-surface">${escapeHtml(c.name)}</h3>
+                    <span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded text-[10px] font-bold uppercase tracking-wider">${escapeHtml(c.surface)}</span>
+                </div>
+                <div class="flex items-center gap-2 text-on-surface-variant mb-4">
+                    <span class="material-symbols-outlined text-sm">location_on</span>
+                    <span class="text-sm">${escapeHtml(c.location)}</span>
+                </div>
+                <div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+                    <div>
+                        <p class="text-xs text-on-surface-variant">Giá thuê/giờ</p>
+                        <p class="font-bold text-primary text-lg">${formatPrice(c.price)}</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="action-icon p-2 rounded-lg border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary hover:bg-primary/5 transition-all" onclick="openEditModal(${c.id})">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+                        <button class="action-icon p-2 rounded-lg border border-outline-variant text-on-surface-variant hover:text-error hover:border-error hover:bg-error/5 transition-all" onclick="openDeleteModal(${c.id})">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    function addCardHtml() {
+        return `
+        <button class="court-card add-card opacity-0 animate-content border-2 border-dashed border-outline-variant rounded-2xl flex flex-col items-center justify-center p-8 gap-4 text-on-surface-variant hover:border-primary hover:text-primary transition-all group hover:bg-primary-container/5 active:scale-95 bg-white" onclick="openAddModal()">
+            <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary-container/20 group-hover:scale-110 transition-all duration-300">
+                <span class="material-symbols-outlined text-3xl">add_circle</span>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-lg">Thêm sân mới</p>
+                <p class="text-sm">Mở rộng hệ thống của bạn ngay bây giờ</p>
+            </div>
+        </button>`;
+    }
+
+    function renderPagination(totalPages) {
+        const el = document.getElementById('pagination-controls');
+        let html = `<button class="page-btn p-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high disabled:opacity-50 transition-colors active:scale-90" ${state.page === 1 ? 'disabled' : ''} onclick="goToPage(${state.page - 1})">
+            <span class="material-symbols-outlined">chevron_left</span></button>`;
+        for (let p = 1; p <= totalPages; p++) {
+            html += `<button class="page-btn w-10 h-10 rounded-lg font-bold transition-colors active:scale-90 ${p === state.page ? 'active-page shadow-md shadow-primary/20' : 'border border-outline-variant text-on-surface-variant hover:bg-surface-container-high'}" onclick="goToPage(${p})">${p}</button>`;
+        }
+        html += `<button class="page-btn p-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high disabled:opacity-50 transition-colors active:scale-90" ${state.page === totalPages ? 'disabled' : ''} onclick="goToPage(${state.page + 1})">
+            <span class="material-symbols-outlined">chevron_right</span></button>`;
+        el.innerHTML = html;
+    }
+
+    function goToPage(p) {
+        if (p < 1) return;
+        state.page = p;
+        render();
+        document.getElementById('courts-view').scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+
+    function escapeHtml(s) {
+        const d = document.createElement('div');
+        d.innerText = s;
+        return d.innerHTML;
+    }
+
+    // ---------- FILTERS ----------
+    document.getElementById('category-filters').addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('#category-filters .filter-btn').forEach(b => {
+            b.classList.remove('active-filter');
+            b.classList.add('bg-white', 'text-on-surface-variant');
+        });
+        btn.classList.add('active-filter');
+        btn.classList.remove('bg-white', 'text-on-surface-variant');
+        state.category = btn.getAttribute('data-type');
+        state.page = 1;
+        render();
+    });
+
+    document.getElementById('status-filter').addEventListener('change', (e) => {
+        state.status = e.target.value;
+        state.page = 1;
+        render();
+    });
+
+    document.getElementById('main-search').addEventListener('input', (e) => {
+        state.search = e.target.value;
+        state.page = 1;
+        render();
+    });
+
+    function setView(v) {
+        state.view = v;
+        document.getElementById('grid-view-btn').className = 'p-2 rounded-lg border active:scale-90 ' + (v === 'grid' ? 'border-primary bg-primary/10 text-primary' : 'border-outline-variant text-on-surface-variant hover:bg-surface-container');
+        document.getElementById('list-view-btn').className = 'p-2 rounded-lg border active:scale-90 ' + (v === 'list' ? 'border-primary bg-primary/10 text-primary' : 'border-outline-variant text-on-surface-variant hover:bg-surface-container');
+        render();
+    }
+
+    // ---------- ADD / EDIT MODAL ----------
+    function openAddModal() {
+        document.getElementById('modal-title').innerText = 'Thêm sân mới';
+        document.getElementById('court-form').reset();
+        document.getElementById('court-id').value = '';
+        document.getElementById('court-modal').classList.add('open');
+    }
+
+    function openEditModal(id) {
+        const c = courts.find(x => x.id === id);
+        if (!c) return;
+        document.getElementById('modal-title').innerText = 'Chỉnh sửa sân';
+        document.getElementById('court-id').value = c.id;
+        document.getElementById('f-name').value = c.name;
+        document.getElementById('f-category').value = c.category;
+        document.getElementById('f-status').value = c.status;
+        document.getElementById('f-surface').value = c.surface;
+        document.getElementById('f-location').value = c.location;
+        document.getElementById('f-price').value = c.price;
+        document.getElementById('f-image').value = c.image || '';
+        document.getElementById('court-modal').classList.add('open');
+    }
+
+    function closeModal() {
+        document.getElementById('court-modal').classList.remove('open');
+    }
+
+    function saveCourt(e) {
+        e.preventDefault();
+        const id = document.getElementById('court-id').value;
+        const data = {
+            name: document.getElementById('f-name').value.trim(),
+            category: document.getElementById('f-category').value,
+            status: document.getElementById('f-status').value,
+            surface: document.getElementById('f-surface').value.trim(),
+            location: document.getElementById('f-location').value.trim(),
+            price: Number(document.getElementById('f-price').value),
+            image: document.getElementById('f-image').value.trim()
+        };
+        if (id) {
+            const idx = courts.findIndex(c => c.id === Number(id));
+            if (idx > -1) courts[idx] = { ...courts[idx], ...data };
+            showToast(`Đã cập nhật "${data.name}" thành công`);
+        } else {
+            courts.push({ id: nextId++, ...data });
+            showToast(`Đã thêm sân "${data.name}" thành công`);
+        }
+        closeModal();
+        render();
+    }
+
+    // ---------- DELETE ----------
+    function openDeleteModal(id) {
+        const c = courts.find(x => x.id === id);
+        if (!c) return;
+        deleteTargetId = id;
+        document.getElementById('delete-court-name').innerText = c.name;
+        document.getElementById('delete-modal').classList.add('open');
+    }
+
+    function closeDeleteModal() {
+        document.getElementById('delete-modal').classList.remove('open');
+        deleteTargetId = null;
+    }
+
+    function confirmDelete() {
+        const c = courts.find(x => x.id === deleteTargetId);
+        courts = courts.filter(x => x.id !== deleteTargetId);
+        closeDeleteModal();
+        render();
+        if (c) showToast(`Đã xóa "${c.name}" thành công`, 'error');
+    }
+
+    // close modal on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(ov => {
+        ov.addEventListener('click', (e) => {
+            if (e.target === ov) ov.classList.remove('open');
+        });
+    });
+
+    // ---------- SIDEBAR TABS ----------
+    const tabLabels = {
+        dashboard: { title: "Tổng quan", desc: "Số liệu tổng quan toàn hệ thống sẽ hiển thị tại đây." },
+        calendar: { title: "Lịch đặt sân", desc: "Lịch đặt sân theo ngày/giờ sẽ hiển thị tại đây." },
+        revenue: { title: "Doanh thu", desc: "Báo cáo doanh thu theo thời gian sẽ hiển thị tại đây." },
+        profile: { title: "Thông tin cá nhân", desc: "Thông tin tài khoản quản trị viên sẽ hiển thị tại đây." },
+        settings: { title: "Cài đặt", desc: "Các tùy chọn cấu hình hệ thống sẽ hiển thị tại đây." }
+    };
+
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelectorAll('.nav-item').forEach(i => {
+                i.classList.remove('active-nav');
+                i.classList.add('text-on-surface-variant');
+            });
+            item.classList.remove('text-on-surface-variant');
+            item.classList.add('active-nav');
+
+            const tab = item.getAttribute('data-tab');
+            const courtsView = document.getElementById('courts-view');
+            const otherView = document.getElementById('other-tab-view');
+            if (tab === 'courts') {
+                courtsView.classList.remove('hidden');
+                otherView.classList.add('hidden');
+            } else {
+                courtsView.classList.add('hidden');
+                otherView.classList.remove('hidden');
+                document.getElementById('other-tab-title').innerText = tabLabels[tab].title;
+                document.getElementById('other-tab-desc').innerText = tabLabels[tab].desc;
+            }
+        });
+    });
+
+    // ---------- CLOCK ----------
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock-time').innerText = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('clock-date').innerText = now.toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // ---------- TOAST ----------
+    function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type === 'error' ? 'bg-error' : 'bg-primary'}`;
+        const icon = type === 'error' ? 'error' : 'check_circle';
+        toast.innerHTML = `<span class="material-symbols-outlined">${icon}</span><p class="font-label-md">${message}</p>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(10px)';
+            toast.style.transition = 'all 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // ---------- INIT ----------
+    render();
+</script>
+</body></html>

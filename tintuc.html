@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tin Tức - 4 ANH EM SIÊU NHÂN</title>
+<!-- Google Fonts: Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "tertiary": "#611e00",
+                    "primary-fixed": "#dde1ff",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "outline": "#757684",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-container": "#6bff8f",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#6bff8f",
+                    "surface-tint": "#3755c3",
+                    "on-surface-variant": "#444653",
+                    "pitch-green": "#22c55e",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "secondary": "#006e2f",
+                    "outline-variant": "#c4c5d5",
+                    "error": "#ba1a1a",
+                    "on-surface": "#0b1c30",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#802a00",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "on-secondary-fixed-variant": "#005321",
+                    "on-secondary-fixed": "#002109",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed": "#001453",
+                    "secondary-fixed-dim": "#4ae176",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed": "#380d00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#a8b8ff",
+                    "surface-white": "#ffffff",
+                    "inverse-primary": "#b8c4ff",
+                    "tertiary-fixed": "#ffdbce",
+                    "tertiary-container": "#872d00",
+                    "action-orange": "#f97316",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary-container": "#007432",
+                    "background-slate": "#f8fafc",
+                    "on-tertiary-container": "#ffa583",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "primary-container": "#1e40af",
+                    "primary": "#00288e",
+                    "surface-container-high": "#dce9ff",
+                    "on-background": "#0b1c30",
+                    "stadium-blue": "#1e40af"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max-width": "1280px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Montserrat"],
+                    "label-sm": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "label-lg": ["Montserrat"],
+                    "body-md": ["Montserrat"],
+                    "body-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-border {
+            position: relative;
+        }
+        .active-nav-border::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #00288e;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full bg-surface/95 dark:bg-inverse-surface/95 backdrop-blur-md border-b border-outline-variant dark:border-outline shadow-sm z-50">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-gutter">
+<a class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed" href="TRANGCHU.html">4 ANH EM SIÊU NHÂN</a>
+<nav class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="timsan.html">Tìm sân</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="gioithieu.html">Về chúng tôi</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="caulacbo.html">Câu lạc bộ</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1 font-semibold" href="tintuc.html">Tin tức</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="hidden md:flex items-center gap-4">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary px-4 py-2 transition-colors"><a href="dangnhap.html">Đăng nhập</a></button>
+<button class="font-body-md text-body-md bg-primary text-on-primary px-6 py-2 rounded-lg hover:opacity-90 active:opacity-80 transition-all shadow-md"><a href="dangky.html">Đăng ký</a></button>
+</div>
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-section-gap">
+<!-- Hero Section -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-16">
+<div class="relative w-full h-[500px] rounded-xl overflow-hidden shadow-xl group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A professional, high-definition panoramic photo of a state-of-the-art multi-sport stadium at dusk. The scene is bathed in dramatic golden hour light mixed with powerful stadium floodlights. The field is a pristine green, and the architectural lines of the stadium are sleek and modern. The overall aesthetic is heroic and high-performance, reflecting the sports booking platform's professional and athletic identity with deep blues and vibrant greens." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0besFVVVj0Dl3lD_1_SP6yoDprSVfm4-IcEAm798kF41IffBhQEoXt8X8KcVlsggNFqyTUEK3_ZEPASaimJWClYF_akp-CzZYwmpusuU3Sv7tv7ZBoCgyyVY3DXCP9VPkUtvtQit5NPJiIJ5Z9F0Jm9w4-STHeef2jECFyJhrC8TC025WjaW1lfqP6HnzC-xzC0eeWtVGe35_RA1kDFdtjkF5F3TeYihKBDWxJXDuP29CmXONYr3mdBv7g7hbkPr_7HiaSxmVwMqm')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-12 max-w-3xl">
+<span class="inline-block bg-pitch-green text-white text-label-lg px-4 py-1 rounded-full mb-4">Tin nổi bật</span>
+<h1 class="font-display-lg text-display-lg text-white mb-4">Tin Tức Thể Thao Mới Nhất</h1>
+<p class="font-body-lg text-body-lg text-surface-container mb-8">Cập nhật những xu hướng thể thao mới nhất, lịch trình các giải đấu phong trào và những câu chuyện truyền cảm hứng từ cộng đồng 4 Anh Em Siêu Nhân.</p>
+<a class="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-lg font-label-lg hover:bg-primary-container transition-colors shadow-lg" href="#">
+                        Đọc bài viết ngay
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Category Filters -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-12">
+<div class="flex flex-wrap items-center justify-between gap-gutter border-b border-outline-variant pb-6">
+<div class="flex flex-wrap items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-lg shadow-sm">Tất cả</button>
+<button class="bg-surface-white text-on-surface-variant hover:text-primary border border-outline-variant px-6 py-2 rounded-full font-label-lg transition-all">Bóng đá</button>
+<button class="bg-surface-white text-on-surface-variant hover:text-primary border border-outline-variant px-6 py-2 rounded-full font-label-lg transition-all">Cầu lông</button>
+<button class="bg-surface-white text-on-surface-variant hover:text-primary border border-outline-variant px-6 py-2 rounded-full font-label-lg transition-all">Tennis</button>
+<button class="bg-surface-white text-on-surface-variant hover:text-primary border border-outline-variant px-6 py-2 rounded-full font-label-lg transition-all">Khuyến mãi</button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm">
+<span>Sắp xếp:</span>
+<select class="bg-transparent border-none focus:ring-0 font-semibold cursor-pointer text-primary">
+<option>Mới nhất</option>
+<option>Xem nhiều nhất</option>
+</select>
+</div>
+</div>
+</section>
+<!-- News Grid -->
+<section class="px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- News Card 1 -->
+<article class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A dynamic shot of a football player in a professional jersey celebrating a goal under bright stadium lights. The focus is sharp on the player's joyful expression, with a blurred background of the pitch. The colors are vibrant with high contrast, emphasizing the action and excitement of the sport, using a professional sports photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN0jgDfZ2S0_W9ckkb9CMiu_Pia4gGlKwV3M9R851ZfQ_RcvgIwbgRv7D385ArEdiNzQcEueuN6IW-2cpJ-o8Kd7Q7YFuMKQDRaUGdpIgNr3_TtRhnf6o7YwlBJ-MhdGKxFxgsXMBxv2eWNgUIce7P1hjU9-Nk013MJgUxwrz2yGAvK69V3AduyjdDZDP3lK0UMUXEGW--crAN5UIbroVI_mRyX4LncZvQ3BRPn7zLTBt1TrGFc7RHJyHTm-snaOAXg_eYJMsa90Rp"/>
+<div class="absolute top-4 left-4 bg-primary/90 backdrop-blur-sm text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded">Sự kiện</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-outline text-label-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        24 Th05, 2024
+                    </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">Giải Bóng Đá "Siêu Nhân Cup 2024" Chính Thức Khai Mạc</h3>
+<p class="font-body-md text-on-surface-variant mb-6 line-clamp-3">Chào đón hơn 32 đội bóng phong trào tham gia tranh tài tại cụm sân 4 Anh Em Siêu Nhân, hứa hẹn những trận cầu kịch tính...</p>
+<div class="mt-auto">
+<a class="inline-flex items-center gap-2 text-primary font-label-lg group-hover:gap-3 transition-all" href="#">
+                            Xem thêm
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- News Card 2 -->
+<article class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A close-up, high-quality image of a badminton racket hitting a shuttlecock mid-air on a professional indoor court. The lighting is crisp, highlighting the textures of the strings and the feathers of the shuttlecock. The background features the blue court flooring and green accents, maintaining a professional and clean sports aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc6pw-blWK-hcx8wVlwE4yaPGsCawEnlUqdMuAI2v5xXu6EpBOimNTIjHK84hJN7wP60msRnAfl8PUURLWn907WVaEQq4qoSjXdHVhL_omqCm-Zf8SvFaVZiO8VE3rDpk255i60ruwLgdveo37utHVeAnB9UPFVKST7v0pimRuVkvQ-S9sS6x_t2aXFXHwxMdQNOnp5cPUsoZ0zjo2fFTG0k91mb7ULqZ45RujvchG1KaMvKISRJmrwUX87NYtRCr5W7mTZBJXKUv9"/>
+<div class="absolute top-4 left-4 bg-pitch-green text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded">Mẹo chơi bóng</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-outline text-label-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        22 Th05, 2024
+                    </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">5 Kỹ Thuật Đập Cầu Lông Uy Lực Cho Người Mới Bắt Đầu</h3>
+<p class="font-body-md text-on-surface-variant mb-6 line-clamp-3">Nâng cấp kỹ năng của bạn với những hướng dẫn chi tiết từ các huấn luyện viên chuyên nghiệp để làm chủ sân cầu...</p>
+<div class="mt-auto">
+<a class="inline-flex items-center gap-2 text-primary font-label-lg group-hover:gap-3 transition-all" href="#">
+                            Xem thêm
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- News Card 3 -->
+<article class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist and professional graphic design representing a loyalty reward program for a sports club. The image features a gold trophy icon and abstract geometric patterns in deep blue and white. The lighting is clean and modern, evoking a sense of premium service and community value, perfectly aligned with the high-performance brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHkSD1I0NsI2y6-EjXkaytti5tebmNK9WfbRnR2f-b4Z2_345rhnjwYjNjk9sDrdh8RMXFzC0m2qQcPm4cBZ8lRdfJhbehdRYclx0M5QxHOhIkDcP-i6ZLLoDi3HcqHavF29vVeQ1twih0leFDA2mfeOH_SjAoh8n5S7EfIMn1noi-3VWnSFzpKRuHkb8QSpHDTEMPUt9s_trq_kf8SYsOHIJztaZ2i8hVV-bsfSEhckk2nlRqnY-2ZGlYZKnBH9vUyd_Nn9dOtmbU"/>
+<div class="absolute top-4 left-4 bg-action-orange text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded">Thông báo</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-outline text-label-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        20 Th05, 2024
+                    </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">Cập Nhật Hệ Thống Tích Điểm Cho Thành Viên VIP</h3>
+<p class="font-body-md text-on-surface-variant mb-6 line-clamp-3">Chúng tôi vừa nâng cấp hệ thống phần thưởng. Giờ đây bạn có thể đổi điểm lấy voucher đặt sân và các phụ kiện thể thao...</p>
+<div class="mt-auto">
+<a class="inline-flex items-center gap-2 text-primary font-label-lg group-hover:gap-3 transition-all" href="#">
+                            Xem thêm
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- News Card 4 -->
+<article class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A clean, top-down view of a professional tennis court with a bright yellow tennis ball resting near the white baseline. The blue court surface contrasts sharply with the green surroundings. The lighting is bright and even, conveying a sense of order and readiness for a high-performance match. Minimalist and athletic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeVAR-vjdF4wnWsayfoL7pZvPpjqbFpHqRqNESQBtukXy1W1JS4U5VrDjG9wgdUXbthHQaRN9UI9ng7guWLlnpNSipgKcBVBJ5s1rvUj15tnSNH1-eDgKY5VHc5S1wKlGQxluIUhOolxZsj3g1kD7j9HRjhw40bhnxMVKvPEgkFby62sg8Mdh0i4Ic7MUk2alIbb2KVIZtGJsS9ra_QnFWg2m5xYu8VjWVYJ6pxbwH7o6wnR_42GteUYk8RfaF9qifxKIbv6zxx7IL"/>
+<div class="absolute top-4 left-4 bg-primary/90 backdrop-blur-sm text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded">Sự kiện</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-outline text-label-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        18 Th05, 2024
+                    </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">Giao Lưu Tennis Cuối Tuần: Kết Nối Đam Mê Thể Thao</h3>
+<p class="font-body-md text-on-surface-variant mb-6 line-clamp-3">Tham gia buổi giao lưu cùng các tay vợt kỳ cựu trong khu vực, cơ hội học hỏi và mở rộng mối quan hệ...</p>
+<div class="mt-auto">
+<a class="inline-flex items-center gap-2 text-primary font-label-lg group-hover:gap-3 transition-all" href="#">
+                            Xem thêm
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- News Card 5 -->
+<article class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A high-key studio photo of a pair of high-performance running shoes and a sports water bottle on a clean white surface with subtle blue shadows. The composition is artistic and minimalist, emphasizing the 'Modern/Corporate' athletic influence. The lighting is soft and professional, highlighting the quality of the gear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE-mqte9kJuJi4rbb3nXm4zM4av7W6HEYAB41FDCp7p2HTXfyFUBYzmBBWmpY9M29ZfIPqZziOmIEbFXJLfplSRR9ej54CBa8W-wn20TbCZYuVpry4wctKc_GJ-KUlTNNtAjsAWHoFcm8toO8k9G9SByg-SFjfc-avApKMfcFXlZ7SwYqLRAMJHaVVlQwcH2d_NP9siY2oLGYt3aP3ulv625oZwoDwYU_YuQJdwcpWVw0gjTthZ7nEEnrK597l5rvO6lq1dYgW4_Eo"/>
+<div class="absolute top-4 left-4 bg-pitch-green text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded">Mẹo chơi bóng</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-outline text-label-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        15 Th05, 2024
+                    </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">Lựa Chọn Giày Thể Thao Phù Hợp Với Từng Mặt Sân</h3>
+<p class="font-body-md text-on-surface-variant mb-6 line-clamp-3">Đừng để chấn thương cản trở đam mê. Tìm hiểu cách chọn giày cho sân cỏ nhân tạo, sân bê tông và sân trong nhà...</p>
+<div class="mt-auto">
+<a class="inline-flex items-center gap-2 text-primary font-label-lg group-hover:gap-3 transition-all" href="#">
+                            Xem thêm
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+<!-- News Card 6 -->
+<article class="bg-surface-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group flex flex-col">
+<div class="relative h-56 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A vibrant, celebratory scene of fans cheering in a blurred background, with a foreground focusing on a modern smartphone displaying a sports booking app interface. The interface is clean, featuring 'Success' messages and green confirmation icons. The mood is triumphant and efficient, symbolizing a seamless user experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGGi5DmwtkqUdl70YYD6rZAtRRx_8bAxDx1iRLa03S_lzDKbvhfUkDky-ATM94fJCSKf7zxnlR5T3DNX6GEA4ibiSXMLATEESrwt2eIIMEkbG0DWU_8KvmpU2w8xZwCHORo4-uIvQ5biURHtuFcOPfW1INHiEdqjVK0Y849KAb6_hCGMEKVLYwdszrphn9stejwt-qA9-kuK2Vj6wdyJQ_3T0CW9FtJ0mWuQZYwgDECZjr1DVMc7TrwaAtZWGck6ABk4fkLZNm_dad"/>
+<div class="absolute top-4 left-4 bg-action-orange text-white text-[10px] uppercase tracking-widest font-bold px-3 py-1 rounded">Khuyến mãi</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-outline text-label-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                        10 Th05, 2024
+                    </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-2">Ưu Đãi "Giờ Vàng": Giảm 50% Phí Đặt Sân Buổi Sáng</h3>
+<p class="font-body-md text-on-surface-variant mb-6 line-clamp-3">Tận hưởng không gian luyện tập chuyên nghiệp với mức giá cực hời khi đặt sân từ 5h00 đến 8h00 sáng hằng ngày...</p>
+<div class="mt-auto">
+<a class="inline-flex items-center gap-2 text-primary font-label-lg group-hover:gap-3 transition-all" href="#">
+                            Xem thêm
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</article>
+</section>
+<!-- Newsletter Signup -->
+<section class="mt-section-gap px-margin-desktop">
+<div class="max-w-container-max mx-auto bg-primary-container rounded-3xl p-12 text-center text-white relative overflow-hidden">
+<!-- Abstract Pattern background -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-4">Đăng Ký Nhận Bản Tin</h2>
+<p class="font-body-lg text-body-lg mb-10 max-w-2xl mx-auto opacity-90">Nhận ngay thông tin về các giải đấu mới nhất và ưu đãi đặc quyền dành riêng cho bạn qua email.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
+<input class="flex-grow px-6 py-4 rounded-xl border-none text-on-surface focus:ring-2 focus:ring-pitch-green outline-none" placeholder="Địa chỉ email của bạn" required="" type="email"/>
+<button class="bg-pitch-green hover:bg-green-600 text-white font-label-lg px-8 py-4 rounded-xl transition-all shadow-lg active:scale-95" type="submit">Đăng ký ngay</button>
+</form>
+<p class="mt-6 text-label-sm opacity-60">Chúng tôi cam kết bảo mật thông tin của bạn. Không spam.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-tertiary dark:bg-on-tertiary-fixed w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter py-16 px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<a class="font-headline-md text-headline-md font-bold text-on-tertiary mb-6 block" href="#">4 ANH EM SIÊU NHÂN</a>
+<p class="text-tertiary-fixed-dim font-body-sm text-body-sm leading-relaxed mb-6">Nền tảng đặt sân thể thao hàng đầu Việt Nam. Mang đến trải nghiệm đặt sân nhanh chóng, tiện lợi và chuyên nghiệp.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-tertiary hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">face_nod</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-on-tertiary hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">brand_awareness</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-on-tertiary font-bold mb-6 font-label-lg">Khám phá</h4>
+<ul class="space-y-4">
+<li><a class="text-tertiary-fixed-dim font-body-sm text-body-sm hover:text-on-primary-container transition-colors" href="#">Tìm sân bóng đá</a></li>
+<li><a class="text-tertiary-fixed-dim font-body-sm text-body-sm hover:text-on-primary-container transition-colors" href="#">Tìm sân cầu lông</a></li>
+<li><a class="text-tertiary-fixed-dim font-body-sm text-body-sm hover:text-on-primary-container transition-colors" href="#">Câu lạc bộ thể thao</a></li>
+<li><a class="text-tertiary-fixed-dim font-body-sm text-body-sm hover:text-on-primary-container transition-colors" href="#">Giải đấu phong trào</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-on-tertiary font-bold mb-6 font-label-lg">Thông tin</h4>
+<ul class="space-y-4 font-body-sm text-body-sm">
+<li><a class="text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Về chúng tôi</a></li>
+<li><a class="text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Hỗ trợ</a></li>
+<li><a class="text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Điều khoản</a></li>
+<li><a class="text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Chính sách bảo mật</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-on-tertiary font-bold mb-6 font-label-lg">Liên hệ</h4>
+<ul class="space-y-4 font-body-sm text-body-sm">
+<li class="flex items-start gap-2 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-pitch-green">location_on</span>
+                        123 Đường Thể Thao, Q.1, TP. HCM
+                    </li>
+<li class="flex items-center gap-2 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-pitch-green">call</span>
+                        1900 1234
+                    </li>
+<li class="flex items-center gap-2 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-pitch-green">mail</span>
+                        contact@4ae-sieunhan.com
+                    </li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 py-8 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-tertiary-fixed-dim font-body-sm text-body-sm">© 2024 4 ANH EM SIÊU NHÂN. Bảo lưu mọi quyền.</p>
+<div class="flex gap-8 text-tertiary-fixed-dim font-body-sm text-body-sm">
+<a class="hover:text-on-tertiary" href="#">Liên hệ</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Micro-interaction: Active category filter
+        const filterButtons = document.querySelectorAll('.flex.flex-wrap.items-center.gap-4 button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                    b.classList.add('bg-surface-white', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                });
+                btn.classList.remove('bg-surface-white', 'text-on-surface-variant', 'border', 'border-outline-variant');
+                btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            });
+        });
+
+        // Search bar interaction
+        const searchBtn = document.querySelector('button .material-symbols-outlined:contains("search")');
+        if(searchBtn) {
+            searchBtn.parentElement.addEventListener('click', () => {
+                console.log('Search opened');
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #003399;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#b5c4ff",
+                      "on-tertiary-fixed-variant": "#424750",
+                      "secondary-container": "#0356ff",
+                      "on-background": "#1c1b1b",
+                      "tertiary": "#22272f",
+                      "tertiary-container": "#383d45",
+                      "inverse-surface": "#313030",
+                      "secondary-fixed-dim": "#b6c4ff",
+                      "on-tertiary-fixed": "#171c23",
+                      "primary": "#002068",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e5e2e1",
+                      "secondary": "#0041c9",
+                      "surface-dim": "#dcd9d9",
+                      "on-secondary-fixed": "#001551",
+                      "primary-container": "#003399",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-bright": "#fcf9f8",
+                      "tertiary-fixed": "#dee2ed",
+                      "on-primary-fixed-variant": "#153ea3",
+                      "secondary-fixed": "#dce1ff",
+                      "inverse-on-surface": "#f3f0ef",
+                      "outline-variant": "#c4c5d5",
+                      "on-secondary-container": "#e4e7ff",
+                      "on-primary-container": "#8aa4ff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#a3a8b2",
+                      "tertiary-fixed-dim": "#c2c6d1",
+                      "background": "#fcf9f8",
+                      "surface-container-high": "#eae7e7",
+"error": "#ba1a1a",
+                      "primary-fixed-dim": "#b5c4ff",
+                      "on-secondary-fixed-variant": "#0039b3",
+                      "on-secondary": "#ffffff",
+                      "surface": "#fcf9f8",
+                      "surface-tint": "#3557bc",
+                      "surface-container-low": "#f6f3f2",
+                      "outline": "#747684",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#1c1b1b",
+                      "on-surface-variant": "#444653",
+                      "primary-fixed": "#dce1ff",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e5e2e1",
+                      "on-primary-fixed": "#00164e",
+                      "surface-container": "#f0eded"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-padding": "80px",
+                      "container-max": "1200px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "stack-lg": "32px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Be Vietnam Pro"],
+                      "display-lg": ["Be Vietnam Pro"],
+                      "headline-sm": ["Be Vietnam Pro"],
+                      "display-lg-mobile": ["Be Vietnam Pro"],
+                      "caption": ["Be Vietnam Pro"],
+                      "body-lg": ["Be Vietnam Pro"],
+                      "body-md": ["Be Vietnam Pro"],
+                      "label-bold": ["Be Vietnam Pro"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-on-tertiary-fixed-variant shadow-sm sticky top-0 z-50 transition-all duration-200">
+<div class="flex justify-between items-center max-w-[1200px] mx-auto px-gutter h-20">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-secondary-fixed-dim">
+                <a href="TRANGCHU.html">4 ANH EM SIÊU NHÂN</a></div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant dark:text-on-tertiary-container font-label-bold hover:text-secondary dark:hover:text-secondary-fixed transition-colors transition-all duration-200 active:opacity-80" href="TRANGCHU.html">Trang Chủ</a>
+<a class="text-secondary dark:text-secondary-fixed border-b-2 border-secondary pb-1 font-label-bold hover:text-secondary dark:hover:text-secondary-fixed transition-colors transition-all duration-200 active:opacity-80" href="#">Tìm sân</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container font-label-bold hover:text-secondary dark:hover:text-secondary-fixed transition-colors transition-all duration-200 active:opacity-80" href="gioithieu.html">Về chúng tôi</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container font-label-bold hover:text-secondary dark:hover:text-secondary-fixed transition-colors transition-all duration-200 active:opacity-80" href="caulacbo.html">Câu lạc bộ</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container font-label-bold hover:text-secondary dark:hover:text-secondary-fixed transition-colors transition-all duration-200 active:opacity-80" href="tintuc.html">Tin tức</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-primary font-label-bold hover:text-secondary transition-colors"><a href="dangnhap.html">Đăng nhập</a></button>
+<button class="bg-primary-container text-white px-6 py-2 rounded-lg font-label-bold hover:bg-secondary transition-colors shadow-sm"><a href="dangky.html">Đăng ký</a></button>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Search Header -->
+<section class="bg-primary py-12 text-white">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<h1 class="font-headline-md text-headline-md mb-8">Kết quả tìm kiếm cho: <span class="font-bold">Sân bóng đá tại TP.HCM</span></h1>
+<!-- Integrated Search Bar -->
+<div class="bg-white rounded-xl p-2 shadow-lg flex flex-col md:flex-row gap-2 max-w-4xl">
+<div class="flex-1 flex items-center px-4 border-r border-outline-variant">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="search">search</span>
+<input class="w-full border-none focus:ring-0 text-on-surface placeholder:text-outline font-body-md" placeholder="Tìm tên sân hoặc khu vực..." type="text" value="Sân bóng đá tại TP.HCM"/>
+</div>
+<div class="flex-1 flex items-center px-4 border-r border-outline-variant">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="sports_soccer">sports_soccer</span>
+<select class="w-full border-none focus:ring-0 text-on-surface font-body-md bg-transparent">
+<option>Bóng đá</option>
+<option>Cầu lông</option>
+<option>Tennis</option>
+<option>Bóng rổ</option>
+</select>
+</div>
+<button class="bg-secondary-container text-white px-8 py-3 rounded-lg font-label-bold hover:opacity-90 transition-all flex items-center justify-center">
+                        Tìm kiếm
+                    </button>
+</div>
+</div>
+</section>
+<!-- Main Content Layout -->
+<div class="max-w-[1200px] mx-auto px-gutter py-12">
+<div class="flex flex-col md:grid md:grid-cols-12 gap-8">
+<!-- Left Sidebar Filters -->
+<aside class="md:col-span-3 space-y-8">
+<div class="bg-white p-6 rounded-xl border border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm mb-6 text-primary">Bộ lọc</h3>
+<!-- Loại sân -->
+<div class="mb-8">
+<p class="font-label-bold mb-4">Loại sân</p>
+<div class="space-y-3">
+<label class="flex items-center cursor-pointer group">
+<input checked="" class="rounded border-outline text-primary focus:ring-primary h-5 w-5 mr-3" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Football</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary h-5 w-5 mr-3" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Badminton</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary h-5 w-5 mr-3" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Tennis</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary h-5 w-5 mr-3" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Basketball</span>
+</label>
+</div>
+</div>
+<!-- Khoảng giá -->
+<div class="mb-8">
+<p class="font-label-bold mb-4">Khoảng giá (vnđ/giờ)</p>
+<input class="w-full accent-primary mb-2" max="1000000" min="100000" step="50000" type="range"/>
+<div class="flex justify-between text-caption text-outline">
+<span>100k</span>
+<span>1.000k</span>
+</div>
+</div>
+<!-- Đánh giá -->
+<div class="mb-8">
+<p class="font-label-bold mb-4">Đánh giá</p>
+<div class="space-y-3">
+<label class="flex items-center cursor-pointer">
+<input class="text-primary focus:ring-primary h-5 w-5 mr-3" name="rating" type="radio"/>
+<div class="flex text-yellow-400">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-caption ml-2 text-outline">(Từ 5 sao)</span>
+</label>
+<label class="flex items-center cursor-pointer">
+<input class="text-primary focus:ring-primary h-5 w-5 mr-3" name="rating" type="radio"/>
+<div class="flex text-yellow-400">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+<span class="text-caption ml-2 text-outline">(Từ 4 sao)</span>
+</label>
+</div>
+</div>
+<!-- Tiện ích -->
+<div class="mb-6">
+<p class="font-label-bold mb-4">Tiện ích</p>
+<div class="space-y-3">
+<label class="flex items-center cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary h-5 w-5 mr-3" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Bãi đỗ xe</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary h-5 w-5 mr-3" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Canteen</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary h-5 w-5 mr-3" type="checkbox"/>
+<span class="text-body-md group-hover:text-primary transition-colors">Wifi miễn phí</span>
+</label>
+</div>
+</div>
+<button class="w-full py-2 text-secondary font-label-bold border border-secondary rounded-lg hover:bg-secondary-fixed transition-colors">
+                            Xóa bộ lọc
+                        </button>
+</div>
+</aside>
+<!-- Right Content Area -->
+<section class="md:col-span-9">
+<!-- Sorting & View Info -->
+<div class="flex justify-between items-center mb-8">
+<p class="text-body-md text-on-surface-variant"><span class="font-bold">24</span> sân bóng được tìm thấy</p>
+<div class="flex items-center">
+<span class="text-caption mr-2 font-label-bold">Sắp xếp:</span>
+<select class="border-outline-variant rounded-lg text-body-md focus:ring-primary px-4 py-2 bg-white">
+<option>Phổ biến nhất</option>
+<option>Giá thấp nhất</option>
+<option>Đánh giá cao nhất</option>
+</select>
+</div>
+</div>
+<!-- Grid of Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional floodlit artificial turf football field at night in Ho Chi Minh City. The vibrant green grass is perfectly manicured under bright stadium lights, creating a high-performance athletic atmosphere. The deep blue evening sky provides a dramatic background for the corporate-modern sports facility aesthetics." src="data:image/jpeg;base64,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"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-bold ml-1">4.8</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-sm text-headline-sm mb-1 truncate">Sân bóng đá Chảo Lửa 2</h4>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="location_on">location_on</span>
+<span class="text-caption truncate">Tân Bình, TP.HCM</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<div>
+<p class="text-caption text-outline">Giá từ</p>
+<p class="font-headline-sm text-primary">350.000đ</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-bold hover:bg-secondary transition-colors">Đặt ngay</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern indoor sports complex featuring professional-grade artificial turf football pitches. The scene is illuminated by clean, overhead LED lighting, reflecting a professional and energetic environment. The corporate blue tones of the building structure emphasize reliability and high-quality sports infrastructure." src="data:image/jpeg;base64,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"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-bold ml-1">4.5</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-sm text-headline-sm mb-1 truncate">Sân cỏ nhân tạo D3</h4>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="location_on">location_on</span>
+<span class="text-caption truncate">Bình Thạnh, TP.HCM</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<div>
+<p class="text-caption text-outline">Giá từ</p>
+<p class="font-headline-sm text-primary">300.000đ</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-bold hover:bg-secondary transition-colors">Đặt ngay</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Spacious premium outdoor football court surrounded by lush greenery under a clear blue sky. The visual style is crisp and clean, highlighting a high-end facility for athletes. Soft, warm daylight creates an inviting atmosphere, with architectural details in professional deep blue and white." src="data:image/jpeg;base64,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"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-bold ml-1">4.9</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-sm text-headline-sm mb-1 truncate">Sân bóng Chu Văn An</h4>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="location_on">location_on</span>
+<span class="text-caption truncate">Quận 1, TP.HCM</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<div>
+<p class="text-caption text-outline">Giá từ</p>
+<p class="font-headline-sm text-primary">450.000đ</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-bold hover:bg-secondary transition-colors">Đặt ngay</button>
+</div>
+</div>
+</div>
+<!-- Repeat cards for layout density -->
+<!-- Card 4 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a high-quality turf surface at a soccer facility with a professional match ball in the foreground. The lighting is focused and cinematic, reflecting a sense of excellence and organizational precision. The color palette is dominated by deep blues and vibrant greens for an energetic yet corporate feel." src="data:image/jpeg;base64,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"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-bold ml-1">4.7</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-sm text-headline-sm mb-1 truncate">Sân 367 Hoàng Hoa Thám</h4>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="location_on">location_on</span>
+<span class="text-caption truncate">Tân Bình, TP.HCM</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<div>
+<p class="text-caption text-outline">Giá từ</p>
+<p class="font-headline-sm text-primary">280.000đ</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-bold hover:bg-secondary transition-colors">Đặt ngay</button>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Wide angle shot of a clean, urban outdoor football facility with multiple pitches. The architecture is modern, using geometric shapes and deep blue branding. Bright white daylight illuminates the space, creating a professional and athletic environment suitable for high-performance training and corporate leagues." src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82YBg9fodfojwcrVfYg6vnemBrEhUH-xUqinKz0CGrO-Ar4O9bl86Mkw&s"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-bold ml-1">4.6</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-sm text-headline-sm mb-1 truncate">Sân bóng Kỳ Hòa</h4>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="location_on">location_on</span>
+<span class="text-caption truncate">Quận 10, TP.HCM</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<div>
+<p class="text-caption text-outline">Giá từ</p>
+<p class="font-headline-sm text-primary">320.000đ</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-bold hover:bg-secondary transition-colors">Đặt ngay</button>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist architectural details of a modern sports pavilion overlooking a green turf. High-key soft lighting emphasizes the pristine condition of the facility. The color palette centers on clean whites and deep navy blues, conveying institutional trust and a high level of organizational excellence." src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVtqWefYphm9gPc2UmBJ7H8fZyb7Fi8GVo1dNGBU8zy0lnLOgEnA1ik90&s"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded-lg flex items-center shadow-sm">
+<span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-bold ml-1">4.4</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-headline-sm text-headline-sm mb-1 truncate">Sân Đại học Y Dược</h4>
+<div class="flex items-center text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="location_on">location_on</span>
+<span class="text-caption truncate">Quận 5, TP.HCM</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<div>
+<p class="text-caption text-outline">Giá từ</p>
+<p class="font-headline-sm text-primary">380.000đ</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-label-bold hover:bg-secondary transition-colors">Đặt ngay</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<nav class="flex justify-center items-center space-x-2 mt-12 py-8">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-primary text-white font-label-bold">1</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-low transition-colors font-label-bold">2</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-low transition-colors font-label-bold">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-low transition-colors font-label-bold">8</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-outline-variant hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-tertiary dark:bg-on-tertiary-fixed text-on-tertiary">
+<div class="max-w-[1200px] mx-auto px-gutter py-section-padding flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="max-w-xs">
+<div class="text-headline-sm font-headline-md text-on-tertiary mb-4">4 ANH EM SIÊU NHÂN</div>
+<p class="font-body-md text-on-tertiary-container mb-6">Nền tảng đặt sân thể thao chuyên nghiệp hàng đầu Việt Nam. Nhanh chóng, uy tín và tiện lợi.</p>
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full border border-on-tertiary-container flex items-center justify-center hover:bg-white hover:text-tertiary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="facebook">face_nod</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-on-tertiary-container flex items-center justify-center hover:bg-white hover:text-tertiary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12 flex-1">
+<div>
+<h5 class="font-label-bold text-white mb-6">Dịch vụ</h5>
+<ul class="space-y-4">
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Tìm sân bóng</a></li>
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Thuê trọng tài</a></li>
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Tổ chức giải</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-bold text-white mb-6">Thông tin</h5>
+<ul class="space-y-4">
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Quy định sử dụng</a></li>
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Liên hệ quảng cáo</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-bold text-white mb-6">Hỗ trợ</h5>
+<ul class="space-y-4">
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Hỗ trợ khách hàng</a></li>
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Tuyển dụng</a></li>
+<li><a class="text-on-tertiary-container hover:text-white transition-colors" href="#">Câu hỏi thường gặp</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="border-t border-tertiary-container py-8 text-center text-caption text-on-tertiary-container">
+            © 2024 4 ANH EM SIÊU NHÂN. All rights reserved. Professional Sports Facility Management.
+        </div>
+</footer>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('input[type="range"]').forEach(slider => {
+            slider.addEventListener('input', (e) => {
+                // Potential dynamic price label update could go here
+            });
+        });
+
+        // Sticky header transition
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.add('shadow-sm');
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

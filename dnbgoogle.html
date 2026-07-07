@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đăng Nhập - 4 ANH EM SIÊU NHÂN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#6bff8f",
+                        "on-primary-container": "#a8b8ff",
+                        "surface-container-high": "#dce9ff",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed": "#001453",
+                        "error": "#ba1a1a",
+                        "primary-container": "#1e40af",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002109",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#611e00",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-container": "#6bff8f",
+                        "surface-bright": "#f8f9ff",
+                        "pitch-green": "#22c55e",
+                        "primary": "#00288e",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "action-orange": "#f97316",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-fixed": "#380d00",
+                        "tertiary-fixed": "#ffdbce",
+                        "background": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed": "#dde1ff",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-background": "#0b1c30",
+                        "surface-tint": "#3755c3",
+                        "outline-variant": "#c4c5d5",
+                        "tertiary-container": "#872d00",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-container": "#007432",
+                        "secondary": "#006e2f",
+                        "on-surface-variant": "#444653",
+                        "stadium-blue": "#1e40af",
+                        "inverse-primary": "#b8c4ff",
+                        "secondary-fixed-dim": "#4ae176",
+                        "on-tertiary-container": "#ffa583",
+                        "surface-variant": "#d3e4fe",
+                        "surface-white": "#ffffff",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-secondary-fixed-variant": "#005321",
+                        "outline": "#757684",
+                        "background-slate": "#f8fafc",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "container-max-width": "1280px",
+                        "base": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "label-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Montserrat', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/95 dark:bg-inverse-surface/95 backdrop-blur-md border-b border-outline-variant shadow-sm">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-[1280px] mx-auto">
+<div class="font-headline-sm text-[24px] font-bold text-primary dark:text-primary-fixed">
+                <a href="TRANGCHU.html">4 ANH EM SIÊU NHÂN</a>
+            </div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="timsan.html">Tìm sân</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="gioithieu.html">Về chúng tôi</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="caulacbo.html">Câu lạc bộ</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="tintuc.html">Tin tức</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">Đăng nhập</button>
+<button class="bg-primary text-white font-label-lg text-label-lg px-6 py-2 rounded-lg hover:opacity-90 transition-opacity">Đăng ký</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 relative overflow-hidden">
+<!-- Blurred Stadium Background -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center filter blur-sm scale-105 brightness-[0.85]" data-alt="A wide-angle cinematic shot of a professional football stadium at twilight. The lush green grass is perfectly manicured under bright floodlights that cast a heroic glow. A slight atmospheric mist or bokeh effect blurs the background spectators and structural details, creating a sense of depth and elite sports competition. The color palette is dominated by deep stadium blues and vibrant pitch greens." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGNjNk2WKkfvQaTbCGssIHsnx7xupJWoAmyRc7gRmq4WwST9FbLSQxa_4eikgtIDAZObjcNmDcxWYrzxOudFcga94kfZiFwugo_HChGw5YoIXENizx6SC2k7kLB7hqSDLkbZksZoYetGXZ-CTNX-hI4DBPUcLkB_quEMF9b9Y92WL4Wrdt2YfvBY9CJmlMDVcpcGo7x6gvpwy8MLjR8j-Wa42qFE36rSFEZ7Qie6vm_-2g_sxOODJzxe6ZruVYF-PAZatdHo7xeQrD')"></div>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+<!-- Login Card -->
+<div class="relative z-10 w-full max-w-[480px] px-margin-mobile">
+<div class="glass-card rounded-[16px] shadow-xl p-8 md:p-10 border border-white/20">
+<div class="text-center mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Đăng Nhập</h1>
+<p class="font-body-md text-on-surface-variant">Chào mừng bạn trở lại với cộng đồng thể thao</p>
+</div>
+<!-- Google Login Button (Primary) -->
+<button class="w-full flex items-center justify-center gap-3 bg-white border border-outline-variant hover:bg-surface-container-low transition-all duration-300 py-3.5 rounded-lg mb-8 shadow-sm group">
+<svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-label-lg text-on-surface group-hover:text-primary transition-colors">Tiếp tục với Google</span>
+</button>
+<!-- Divider -->
+<div class="flex items-center gap-4 mb-8">
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+<span class="font-label-sm text-outline uppercase tracking-widest">Hoặc</span>
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+</div>
+<!-- Email Login Form -->
+<form class="space-y-5">
+<div>
+<label class="block font-label-lg text-on-surface mb-2">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-10 pr-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="example@email.com" type="email"/>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="block font-label-lg text-on-surface">Mật khẩu</label>
+<a class="font-label-sm text-primary hover:underline" href="quenmk.html">Quên mật khẩu?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-10 pr-12 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-label-lg py-4 rounded-lg hover:shadow-lg hover:opacity-95 transform active:scale-[0.98] transition-all" type="submit">
+                        <a href="dangnhap.html">Đăng nhập</a>
+                    </button>
+</form>
+<div class="mt-8 text-center">
+<p class="font-body-md text-on-surface-variant">
+                        Chưa có tài khoản? 
+                        <a class="text-primary font-bold hover:underline ml-1" href="dangky.html">Đăng ký ngay</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-tertiary dark:bg-on-tertiary-fixed py-12 md:py-16">
+<div class="max-w-[1280px] mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-md text-headline-md font-bold text-on-tertiary mb-4">
+                        4 ANH EM SIÊU NHÂN
+                    </div>
+<p class="font-body-sm text-tertiary-fixed-dim leading-relaxed">
+                        Nền tảng đặt sân thể thao hàng đầu Việt Nam. Kết nối đam mê, nâng tầm thể chất.
+                    </p>
+</div>
+<div>
+<h4 class="font-label-lg text-on-tertiary mb-6 uppercase tracking-wider">Khám phá</h4>
+<ul class="space-y-4">
+<li><a class="font-body-sm text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="timsan.html">Tìm sân vận động</a></li>
+<li><a class="font-body-sm text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Giải đấu phong trào</a></li>
+<li><a class="font-body-sm text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="tintuc.html">Tin tức thể thao</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-on-tertiary mb-6 uppercase tracking-wider">Hỗ trợ</h4>
+<ul class="space-y-4">
+<li><a class="font-body-sm text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Trung tâm trợ giúp</a></li>
+<li><a class="font-body-sm text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Điều khoản dịch vụ</a></li>
+<li><a class="font-body-sm text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#">Chính sách bảo mật</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-on-tertiary mb-6 uppercase tracking-wider">Liên hệ</h4>
+<ul class="space-y-4">
+<li class="flex items-center gap-2 text-tertiary-fixed-dim font-body-sm">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                            +84 (0) 123 456 789
+                        </li>
+<li class="flex items-center gap-2 text-tertiary-fixed-dim font-body-sm">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                            support@sieunhan.vn
+                        </li>
+</ul>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-sm text-tertiary-fixed-dim">© 2024 4 ANH EM SIÊU NHÂN. Bảo lưu mọi quyền.</p>
+<div class="flex gap-6">
+<a class="text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#"><span class="material-symbols-outlined">face_nod</span></a>
+<a class="text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-tertiary-fixed-dim hover:text-on-primary-container transition-colors" href="#"><span class="material-symbols-outlined">play_circle</span></a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for input fields
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#00288e';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#757684';
+            });
+        });
+
+        // Password visibility toggle
+        const togglePassword = document.querySelector('button[type="button"]');
+        const passwordInput = document.querySelector('input[type="password"]');
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', () => {
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                togglePassword.innerHTML = `<span class="material-symbols-outlined">${isPassword ? 'visibility_off' : 'visibility'}</span>`;
+            });
+        }
+    </script>
+</body></html>

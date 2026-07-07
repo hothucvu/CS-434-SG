@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ProArena - Bảng điều khiển quản trị</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #fcf9f8;
+            margin: 0;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e2e1;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fcf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#3557bc",
+                        "tertiary": "#22272f",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "primary": "#002068",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary-fixed-variant": "#153ea3",
+                        "surface-container-high": "#eae7e7",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-container": "#e4e7ff",
+                        "secondary-container": "#0356ff",
+                        "on-secondary-fixed": "#001551",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-variant": "#e5e2e1",
+                        "surface-bright": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#a3a8b2",
+                        "secondary": "#0041c9",
+                        "tertiary-fixed": "#dee2ed",
+                        "on-tertiary-fixed": "#171c23",
+                        "tertiary-fixed-dim": "#c2c6d1",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-primary-container": "#8aa4ff",
+                        "on-background": "#1c1b1b",
+                        "on-surface": "#1c1b1b",
+                        "background": "#fcf9f8",
+                        "primary-fixed": "#dce1ff",
+                        "inverse-primary": "#b5c4ff",
+                        "surface-container": "#f0eded",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b5c4ff",
+                        "on-tertiary-fixed-variant": "#424750",
+                        "on-surface-variant": "#444653",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#383d45",
+                        "on-secondary-fixed-variant": "#0039b3",
+                        "outline": "#747684",
+                        "inverse-surface": "#313030",
+                        "secondary-fixed": "#dce1ff",
+                        "outline-variant": "#c4c5d5",
+                        "primary-container": "#003399"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "display-lg": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "caption": ["Be Vietnam Pro"],
+                        "label-bold": ["Be Vietnam Pro"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface-container-lowest flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ProArena Admin</h1>
+<p class="font-body-md text-on-surface-variant">Quản lý cơ sở</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="qldatsan.html">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-md">Đặt sân</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="qlcsvatchat.html">
+<span class="material-symbols-outlined" data-icon="sports_tennis">sports_tennis</span>
+<span class="font-body-md">Cơ sở vật chất</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="qlkhachhang.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Khách hàng</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors" href="caidat.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Cài đặt</span>
+</a>
+</nav>
+<div class="mt-auto px-4 pt-4 border-t border-outline-variant flex items-center gap-3">
+<img alt="Ảnh đại diện quản trị viên" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtWctqjCXgzrbIt4lKc6585goQVzSe0xqjbHQyFY74y5StJ9pE4MZw3nxX1M1-n5rCcdEYEDpOe3jJOdEVmWFTQ149TAPzYYuwGaFDn66l-v1fR8QFG2XEtsj7AZUxwiN5rp1KoCn5a7VQ7gxz64FUjBhxgq2zd3KjdorG6yKrANFQzGU8vHRMB3Mv_yMmcHEYwehPx7fWO2hqUXbKuu5ME2Yv7BU5Nz1JG3PIs3OtU5DT6zWvh23HB8Nw"/>
+<div>
+<p class="font-label-bold text-on-surface">Alex Rivera</p>
+<p class="font-caption text-on-surface-variant">Quản trị hệ thống</p>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-8 z-40">
+<div class="flex items-center bg-surface-container-low px-4 py-2 rounded-xl w-96 focus-within:ring-2 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-body-md" placeholder="Tìm kiếm phân tích hoặc lịch đặt sân..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="font-label-bold text-primary">ProArena</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 h-[calc(100vh-4rem)] overflow-y-auto custom-scrollbar">
+<div class="max-w-[1200px] mx-auto pb-12">
+<!-- Welcome Header -->
+<div class="mb-10">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Tổng quan bảng điều khiển</h2>
+<p class="font-body-md text-on-surface-variant">Các chỉ số hiệu suất thời gian thực cho nhà thi đấu thể thao của bạn.</p>
+</div>
+<!-- Summary Cards Grid (4 per row) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+<!-- Revenue Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary" data-icon="payments">payments</span>
+</div>
+<span class="text-green-600 font-label-bold flex items-center text-sm">
+                        +12.5% <span class="material-symbols-outlined text-xs ml-1" data-icon="trending_up">trending_up</span>
+</span>
+</div>
+<p class="font-caption text-on-surface-variant uppercase tracking-wider mb-1">Tổng doanh thu</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">$42,850.00</h3>
+</div>
+<!-- Bookings Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-container rounded-lg">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="confirmation_number" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+</div>
+<span class="text-green-600 font-label-bold flex items-center text-sm">
+                        +8.2% <span class="material-symbols-outlined text-xs ml-1" data-icon="trending_up">trending_up</span>
+</span>
+</div>
+<p class="font-caption text-on-surface-variant uppercase tracking-wider mb-1">Tổng lượt đặt sân</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">1,284</h3>
+</div>
+<!-- Active Facilities Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-container rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary" data-icon="sports_kabaddi">sports_kabaddi</span>
+</div>
+<span class="text-on-surface-variant font-label-bold flex items-center text-sm">
+                        Ổn định <span class="material-symbols-outlined text-xs ml-1" data-icon="horizontal_rule">horizontal_rule</span>
+</span>
+</div>
+<p class="font-caption text-on-surface-variant uppercase tracking-wider mb-1">Sân đang hoạt động</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">24</h3>
+</div>
+<!-- New Customers Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary rounded-lg">
+<span class="material-symbols-outlined text-on-secondary" data-icon="person_add">person_add</span>
+</div>
+<span class="text-error font-label-bold flex items-center text-sm">
+                        -2.4% <span class="material-symbols-outlined text-xs ml-1" data-icon="trending_down">trending_down</span>
+</span>
+</div>
+<p class="font-caption text-on-surface-variant uppercase tracking-wider mb-1">Khách hàng mới</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">312</h3>
+</div>
+</div>
+<!-- Main Analytics Section (Bento Grid Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+<!-- Large Line Chart: Revenue Overview -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Tổng quan doanh thu</h3>
+<p class="font-caption text-on-surface-variant">Xu hướng doanh thu hàng tháng trong năm nay</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container rounded-md font-label-bold text-xs hover:bg-surface-variant transition-colors">6 Tháng</button>
+<button class="px-3 py-1 bg-primary text-on-primary rounded-md font-label-bold text-xs transition-colors">1 Năm</button>
+</div>
+</div>
+<div class="h-[300px] w-full">
+<canvas id="revenueLineChart"></canvas>
+</div>
+</div>
+<!-- Pie Chart: Bookings by Sport -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Đặt sân theo môn thể thao</h3>
+<p class="font-caption text-on-surface-variant mb-8">Phân bổ sử dụng cơ sở vật chất</p>
+<div class="h-[250px] flex items-center justify-center">
+<canvas id="bookingsPieChart"></canvas>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-caption text-on-surface-variant">Bóng đá</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-caption text-on-surface-variant">Cầu lông</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary-fixed-dim"></span>
+<span class="font-caption text-on-surface-variant">Tennis</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="font-caption text-on-surface-variant">Bóng rổ</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Recent Bookings Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(0,0,0,0.05)] overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Lịch đặt sân gần đây</h3>
+<button class="text-primary font-label-bold hover:underline flex items-center">
+                    Xem tất cả <span class="material-symbols-outlined text-sm ml-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-8 py-4 font-label-bold text-on-surface-variant">Tên khách hàng</th>
+<th class="px-8 py-4 font-label-bold text-on-surface-variant">Môn thể thao</th>
+<th class="px-8 py-4 font-label-bold text-on-surface-variant">Ngày</th>
+<th class="px-8 py-4 font-label-bold text-on-surface-variant">Giờ</th>
+<th class="px-8 py-4 font-label-bold text-on-surface-variant">Số tiền</th>
+<th class="px-8 py-4 font-label-bold text-on-surface-variant">Trạng thái</th>
+<th class="px-8 py-4 font-label-bold text-on-surface-variant">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-8 py-4 font-body-md text-on-surface">James Wilson</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label-bold text-xs text-on-surface-variant">Bóng đá</span>
+</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">24/10/2023</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">18:00 - 19:30</td>
+<td class="px-8 py-4 font-label-bold text-on-surface">$45.00</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full font-label-bold text-xs">Đã xác nhận</span>
+</td>
+<td class="px-8 py-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-8 py-4 font-body-md text-on-surface">Sarah Connor</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label-bold text-xs text-on-surface-variant">Tennis</span>
+</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">24/10/2023</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">10:00 - 11:00</td>
+<td class="px-8 py-4 font-label-bold text-on-surface">$30.00</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full font-label-bold text-xs">Đang chờ</span>
+</td>
+<td class="px-8 py-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-8 py-4 font-body-md text-on-surface">Michael Chen</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label-bold text-xs text-on-surface-variant">Cầu lông</span>
+</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">23/10/2023</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">19:00 - 20:30</td>
+<td class="px-8 py-4 font-label-bold text-on-surface">$25.00</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full font-label-bold text-xs">Đã xác nhận</span>
+</td>
+<td class="px-8 py-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-8 py-4 font-body-md text-on-surface">Elena Rodriguez</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label-bold text-xs text-on-surface-variant">Bóng rổ</span>
+</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">23/10/2023</td>
+<td class="px-8 py-4 font-body-md text-on-surface-variant">15:00 - 17:00</td>
+<td class="px-8 py-4 font-label-bold text-on-surface">$50.00</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 bg-red-100 text-red-800 rounded-full font-label-bold text-xs">Đã hủy</span>
+</td>
+<td class="px-8 py-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<script>
+    // Line Chart Initialization
+    const ctxLine = document.getElementById('revenueLineChart').getContext('2d');
+    new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12'],
+            datasets: [{
+                label: 'Doanh thu',
+                data: [2800, 3200, 3100, 4500, 5200, 4800, 6100, 6800, 6200, 7500, 8100, 8500],
+                borderColor: '#002068',
+                backgroundColor: 'rgba(0, 32, 104, 0.05)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: '#002068'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: '#f0eded' },
+                    ticks: {
+                        callback: value => '$' + value,
+                        font: { family: 'Be Vietnam Pro', size: 12 }
+                    }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: { family: 'Be Vietnam Pro', size: 12 } }
+                }
+            }
+        }
+    });
+
+    // Pie Chart Initialization
+    const ctxPie = document.getElementById('bookingsPieChart').getContext('2d');
+    new Chart(ctxPie, {
+        type: 'doughnut',
+        data: {
+            labels: ['Bóng đá', 'Cầu lông', 'Tennis', 'Bóng rổ'],
+            datasets: [{
+                data: [45, 25, 15, 15],
+                backgroundColor: ['#002068', '#0041c9', '#b6c4ff', '#383d45'],
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '70%',
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+</script>
+</body></html>
+Đang hiển thị 2aOboQh3lOKi3QIc1qN3BD3Kj3PtsdbYAzvjutf6.
