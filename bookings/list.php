@@ -1,0 +1,99 @@
+<?php
+session_start();
+require_once __DIR__ . '/../config/db.php';
+
+// Bật kiểm tra đăng nhập nếu hệ thống của bạn đã có trang auth
+// require_once __DIR__ . '/../includes/auth_check.php';
+
+$tieu_de = 'Lịch sử đặt sân';
+require_once __DIR__ . '/../includes/header.php';
+
+// Giả lập ID người dùng nếu chưa chạy chức năng đăng nhập (Thay bằng ID user trong DB của bạn)
+$user_id = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : 1; 
+
+// Thực hiện JOIN bảng fields để lấy tên sân và hiển thị kèm thông tin đặt lịch
+$sql = "SELECT b.*, f.ten_san, f.loai_san 
+        FROM bookings b
+        JOIN fields f ON b.field_id = f.id
+        WHERE b.user_id = ?
+        ORDER BY b.created_at DESC";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$bookings = $stmt->fetchAll();
+?>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold text-dark text-uppercase">⚽ Lịch Sử Đặt Sân Của Bạn</h4>
+        <a href="../fields/list.php" class="btn btn-sm btn-success fw-bold">+ Đặt sân mới</a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle mb-0">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Mã Đơn</th>
+                        <th>Tên Sân</th>
+                        <th>Ngày Đá</th>
+                        <th>Khung Giờ</th>
+                        <th>Tổng Tiền</th>
+                        <th>Trạng Thái</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($bookings) == 0): ?>
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-4">Bạn chưa có lịch sử đặt sân nào.</td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($bookings as $b): ?>
+                            <tr>
+                                <td class="text-center fw-bold">#<?= $b['id'] ?></td>
+                                <td>
+                                    <strong><?= htmlspecialchars($b['ten_san']) ?></strong>
+                                    <br><small class="text-muted"><?= htmlspecialchars($b['loai_san']) ?></small>
+                                </td>
+                                <td class="text-center"><?= date('d/m/Y', strtotime($b['ngay_dat'])) ?></td>
+                                <td class="text-center fw-bold text-primary">
+                                    <?= date('H:i', strtotime($b['gio_bat_dau'])) ?> - <?= date('H:i', strtotime($b['gio_ket_thuc'])) ?>
+                                </td>
+                                <td class="text-end text-danger fw-bold">
+                                    <?= number_format($b['tong_tien'], 0, ',', '.') ?> đ
+                                </td>
+                                <td class="text-center">
+                                    <?php if ($b['trang_thai'] == 'cho_xac_nhan'): ?>
+                                        <span class="badge bg-warning text-dark">Chờ xác nhận</span>
+                                    <?php elseif ($b['trang_thai'] == 'da_xac_nhan'): ?>
+                                        <span class="badge bg-success">Đã xác nhận</span>
+                                    <?php else: ?>
+                                        <span class="badge bg-secondary">Đã hủy</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if ($b['trang_thai'] == 'cho_xac_nhan'): ?>
+                                        <!-- Nút Sửa: Dẫn sang trang update.php kèm ID đơn -->
+                                        <a href="update.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-warning fw-bold text-dark me-1">
+                                            ✏️ Sửa
+                                        </a>
+                                        
+                                        <!-- Nút Xóa: Dẫn sang trang delete.php kèm ID đơn và có cảnh báo xác nhận -->
+                                        <a href="delete.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-danger fw-bold" onclick="return confirm('Bạn có chắc chắn muốn XÓA hẳn đơn đặt sân này?')">
+                                            🗑️ Xóa
+                                        </a>
+                                    <?php else: ?>
+                                        <span class="text-muted small">Không thể thao tác</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>
