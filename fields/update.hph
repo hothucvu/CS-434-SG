@@ -1,0 +1,81 @@
+<?php
+session_start();
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
+require_once __DIR__ . '/../includes/role_check.php';
+
+// Lấy toàn bộ danh sách sân
+$stmt = $pdo->query("SELECT * FROM fields ORDER BY id DESC");
+$fields = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$tieu_de = 'Quản lý sân (Admin)';
+require_once '../includes/header.php';
+?>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark">🛠️ Quản Lý Danh Sách Sân</h2>
+        <a href="create.php" class="btn btn-primary btn-lg fw-bold">+ Thêm Sân Mới</a>
+    </div>
+
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert alert-success shadow-sm"><?= $_SESSION['success']; unset($_SESSION['success']); ?></div>
+    <?php endif; ?>
+
+    <div class="card shadow-sm border-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 80px;">ID</th>
+                        <th style="width: 120px;">Hình ảnh</th>
+                        <th>Tên sân</th>
+                        <th>Loại sân</th>
+                        <th>Giá thuê</th>
+                        <th style="width: 160px;" class="text-center">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (empty($fields)): ?>
+                        <tr>
+                            <td colspan="6" class="text-center py-4 text-muted">Chưa có sân nào trong hệ thống.</td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($fields as $field): 
+                            // Tự động map tên cột tránh lỗi key undefined
+                            $id    = $field['id'] ?? $field['ma_san'] ?? $field['field_id'] ?? 0;
+                            $name  = $field['name'] ?? $field['ten_san'] ?? 'Chưa đặt tên';
+                            $type  = $field['type'] ?? $field['loai_san'] ?? 'Chưa phân loại';
+                            $price = $field['price'] ?? $field['gia'] ?? $field['gia_san'] ?? 0;
+                            $img   = $field['image'] ?? $field['hinhanh'] ?? $field['anh_san'] ?? '';
+
+                            if (!empty($img) && file_exists("../assets/uploads/" . $img)) {
+                                $image_src = "../assets/uploads/" . $img;
+                            } else {
+                                $image_src = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=200&auto=format&fit=crop"; 
+                            }
+                        ?>
+                        <tr>
+                            <td class="fw-bold text-secondary">#<?= $id ?></td>
+                            <td>
+                                <img src="<?= $image_src ?>" class="rounded shadow-sm" width="90" height="60" style="object-fit: cover;">
+                            </td>
+                            <td class="fw-bold text-dark"><?= htmlspecialchars($name) ?></td>
+                            <td><span class="badge bg-secondary"><?= htmlspecialchars($type) ?></span></td>
+                            <td class="text-danger fw-bold"><?= number_format($price) ?>đ/giờ</td>
+                            <td class="text-center">
+                                <a href="update.php?id=<?= $id ?>" class="btn btn-warning btn-sm fw-bold">Sửa</a>
+                                <a href="delete.php?id=<?= $id ?>" class="btn btn-danger btn-sm fw-bold" onclick="return confirm('Bạn có chắc chắn muốn xóa sân này?')">Xóa</a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<?php require_once '../includes/footer.php'; ?>

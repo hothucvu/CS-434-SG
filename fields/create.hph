@@ -1,0 +1,59 @@
+<?php
+session_start();
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
+require_once __DIR__ . '/../includes/role_check.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name']);
+    $type = $_POST['type'];
+    $price = $_POST['price'];
+    
+    // Xử lý upload ảnh sân
+    $image_name = 'default.jpg';
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        $image_name = time() . '_' . uniqid() . '.' . $ext;
+        move_uploaded_file($_FILES['image']['tmp_name'], '../assets/uploads/' . $image_name);
+    }
+
+    $stmt = $pdo->prepare("INSERT INTO fields (name, type, price, image) VALUES (?, ?, ?, ?)");
+    if ($stmt->execute([$name, $type, $price, $image_name])) {
+        $_SESSION['success'] = "Thêm sân thành công!";
+        header("Location: admin.php");
+        exit;
+    }
+}
+
+$tieu_de = 'Thêm sân mới';
+require_once '../includes/header.php';
+?>
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>➕ Thêm Sân Mới</h2>
+    <form method="POST" enctype="multipart/form-data" class="mt-3">
+        <div class="mb-3">
+            <label class="form-label">Tên sân:</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Loại sân:</label>
+            <select name="type" class="form-select" required>
+                <option value="Sân 5">Sân 5 người</option>
+                <option value="Sân 7">Sân 7 người</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Giá thuê (VNĐ/Giờ):</label>
+            <input type="number" name="price" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Hình ảnh sân:</label>
+            <input type="file" name="image" class="form-control" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-success">Lưu lại</button>
+        <a href="admin.php" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
+
+<?php require_once '../includes/footer.php'; ?>
