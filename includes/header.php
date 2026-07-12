@@ -32,6 +32,10 @@ $vai_tro = $_SESSION['user']['vai_tro'] ?? '';
           <a href="<?= BASE_URL ?>/admin/customers.php"      class="hover:text-indigo-600">Khách hàng</a>
         <?php endif; ?>
         <?php if ($ten): ?>
+          <a href="<?= BASE_URL ?>/auth/profile.php"
+   class="hover:text-indigo-600">
+    Thông tin cá nhân
+</a>
           <span class="text-slate-500">Xin chào, <?= htmlspecialchars($ten) ?></span>
           <a href="<?= BASE_URL ?>/auth/logout.php" class="text-red-500 hover:underline">Đăng xuất</a>
         <?php else: ?>
