@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
 
 // Bật kiểm tra đăng nhập nếu hệ thống của bạn đã có trang auth
 // require_once __DIR__ . '/../includes/auth_check.php';

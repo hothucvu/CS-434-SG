@@ -1,9 +1,10 @@
 <?php
 session_start();
 require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
+require_once __DIR__ . '/../includes/role_check.php';
 
-// Bạn nên bật check quyền Admin ở đây nếu có
-// require_once __DIR__ . '/../includes/admin_check.php';
+
 
 $tieu_de = 'Quản lý lịch đặt sân';
 require_once __DIR__ . '/../includes/header.php';
