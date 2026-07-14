@@ -25,10 +25,11 @@ $vai_tro = $_SESSION['user']['vai_tro'] ?? '';
       <div class="flex items-center gap-4 text-sm">
         <a href="<?= BASE_URL ?>/index.php"                 class="hover:text-indigo-600">Trang chủ</a>
         <a href="<?= BASE_URL ?>/fields/list.php"           class="hover:text-indigo-600">Tìm sân</a>
-        <a href="<?= BASE_URL ?>/bookings/create.php"        class="hover:text-indigo-600">Đặt sân</a>
+        <a href="<?= BASE_URL ?>/bookings/list.php"        class="hover:text-indigo-600">Lịch đặt</a>
+
         <?php if ($vai_tro === 'admin'): ?>
           <a href="<?= BASE_URL ?>/fields/admin.php"         class="hover:text-indigo-600">Quản lý sân</a>
-          <a href="<?= BASE_URL ?>/bookings/list.php"        class="hover:text-indigo-600">Lịch đặt</a>
+          <a href="<?= BASE_URL ?>/admin/manage.php"        class="hover:text-indigo-600">Quản lý lịch đặt</a>
           <a href="<?= BASE_URL ?>/admin/customers.php"      class="hover:text-indigo-600">Khách hàng</a>
           <a href="<?= BASE_URL ?>/admin/stats.php"      class="hover:text-indigo-600">Thống kê</a>
         <?php endif; ?>

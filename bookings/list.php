@@ -8,11 +8,17 @@ require_once __DIR__ . '/../config/db.php';
 $tieu_de = 'Lịch sử đặt sân';
 require_once __DIR__ . '/../includes/header.php';
 
-// Giả lập ID người dùng nếu chưa chạy chức năng đăng nhập (Thay bằng ID user trong DB của bạn)
+// Giả lập ID người dùng nếu chưa chạy chức năng đăng nhập
 $user_id = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : 1; 
 
-// Thực hiện JOIN bảng fields để lấy tên sân và hiển thị kèm thông tin đặt lịch
-$sql = "SELECT b.*, f.ten_san, f.loai_san 
+/**
+ * THAY ĐỔI QUAN TRỌNG:
+ * - Sử dụng TIMEDIFF để tính khoảng thời gian giữa giờ kết thúc và giờ bắt đầu.
+ * - TIME_TO_SEC đổi khoảng thời gian đó ra giây, chia cho 3600 để ra số giờ (ví dụ: 1.5 giờ).
+ * - Nhân với f.gia_thue từ bảng fields để ra tổng tiền và đặt tên giả (AS) là tong_tien.
+ */
+$sql = "SELECT b.*, f.ten_san, f.loai_san,
+        (TIME_TO_SEC(TIMEDIFF(b.gio_ket_thuc, b.gio_bat_dau)) / 3600) * f.gia_thue AS tong_tien
         FROM bookings b
         JOIN fields f ON b.field_id = f.id
         WHERE b.user_id = ?
@@ -61,25 +67,28 @@ $bookings = $stmt->fetchAll();
                                     <?= date('H:i', strtotime($b['gio_bat_dau'])) ?> - <?= date('H:i', strtotime($b['gio_ket_thuc'])) ?>
                                 </td>
                                 <td class="text-end text-danger fw-bold">
-                                    <?= number_format($b['tong_tien'], 0, ',', '.') ?> đ
+                                    <!-- Hiển thị tổng tiền đã được tính toán tự động từ SQL -->
+                                    <?= number_format((float)($b['tong_tien'] ?? 0), 0, ',', '.') ?> đ
                                 </td>
                                 <td class="text-center">
-                                    <?php if ($b['trang_thai'] == 'cho_xac_nhan'): ?>
-                                        <span class="badge bg-warning text-dark">Chờ xác nhận</span>
-                                    <?php elseif ($b['trang_thai'] == 'da_xac_nhan'): ?>
-                                        <span class="badge bg-success">Đã xác nhận</span>
+                                    <!-- ĐÃ SỬA: Khớp với enum ('cho_duyet', 'da_duyet', 'da_huy') trong DB -->
+                                    <?php if ($b['trang_thai'] == 'cho_duyet'): ?>
+                                        <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                                    <?php elseif ($b['trang_thai'] == 'da_duyet'): ?>
+                                        <span class="badge bg-success">Đã duyệt</span>
                                     <?php else: ?>
                                         <span class="badge bg-secondary">Đã hủy</span>
                                     <?php endif; ?>
                                 </td>
                                 <td class="text-center">
-                                    <?php if ($b['trang_thai'] == 'cho_xac_nhan'): ?>
-                                        <!-- Nút Sửa: Dẫn sang trang update.php kèm ID đơn -->
+                                    <!-- ĐÃ SỬA: Cho phép sửa/xóa khi trạng thái là 'cho_duyet' -->
+                                    <?php if ($b['trang_thai'] == 'cho_duyet'): ?>
+                                        <!-- Nút Sửa -->
                                         <a href="update.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-warning fw-bold text-dark me-1">
                                             ✏️ Sửa
                                         </a>
                                         
-                                        <!-- Nút Xóa: Dẫn sang trang delete.php kèm ID đơn và có cảnh báo xác nhận -->
+                                        <!-- Nút Xóa -->
                                         <a href="delete.php?id=<?= $b['id'] ?>" class="btn btn-sm btn-danger fw-bold" onclick="return confirm('Bạn có chắc chắn muốn XÓA hẳn đơn đặt sân này?')">
                                             🗑️ Xóa
                                         </a>

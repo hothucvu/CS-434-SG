@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Chèn dữ liệu đặt sân mới vào bảng bookings (ĐÃ LOẠI BỎ CỘT TONG_TIEN KHỎI CÂU LỆNH SQL)
             $sql_insert = "INSERT INTO bookings (user_id, field_id, ngay_dat, gio_bat_dau, gio_ket_thuc, ghi_chu, trang_thai, created_at) 
-                           VALUES (?, ?, ?, ?, ?, ?, 'cho_xac_nhan', NOW())";
+                           VALUES (?, ?, ?, ?, ?, ?, 'cho_duyet', NOW())";
             $stmt_insert = $pdo->prepare($sql_insert);
             $stmt_insert->execute([$user_id, $field_id, $ngay_dat, $gio_bat_dau, $gio_ket_thuc, $ghi_chu]);
 

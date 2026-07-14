@@ -30,8 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // 3. Mã hóa mật khẩu an toàn
             $mat_khau_ma_hoa = password_hash($mat_khau, PASSWORD_DEFAULT);
             
-            // 4. Thêm tài khoản vào cơ sở dữ liệu (Mặc định vai trò là 'customer')
-            $stmt = $pdo->prepare("INSERT INTO users (ho_ten, email, mat_khau, vai_tro) VALUES (?, ?, ?, 'customer')");
+            $stmt = $pdo->prepare("INSERT INTO users (ho_ten, email, mat_khau, vai_tro) VALUES (?, ?, ?, 'user')");
             
             if ($stmt->execute([$ho_ten, $email, $mat_khau_ma_hoa])) {
                 $thanh_cong = 'Đăng ký tài khoản thành công! Bạn có thể đăng nhập ngay.';
