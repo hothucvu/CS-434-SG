@@ -27,7 +27,6 @@ require_once __DIR__ . '/includes/header.php';
 
   <div class="mt-8 flex justify-center gap-3">
     <a href="<?= BASE_URL ?>/fields/list.php"    class="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Tìm sân ngay</a>
-    <a href="<?= BASE_URL ?>/auth/login.php"      class="px-5 py-2 border rounded-lg hover:bg-slate-100">Đăng nhập</a>
   </div>
 </div>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

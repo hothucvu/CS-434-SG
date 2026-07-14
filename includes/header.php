@@ -30,6 +30,7 @@ $vai_tro = $_SESSION['user']['vai_tro'] ?? '';
           <a href="<?= BASE_URL ?>/fields/admin.php"         class="hover:text-indigo-600">Quản lý sân</a>
           <a href="<?= BASE_URL ?>/bookings/list.php"        class="hover:text-indigo-600">Lịch đặt</a>
           <a href="<?= BASE_URL ?>/admin/customers.php"      class="hover:text-indigo-600">Khách hàng</a>
+          <a href="<?= BASE_URL ?>/admin/stats.php"      class="hover:text-indigo-600">Thống kê</a>
         <?php endif; ?>
         <?php if ($ten): ?>
           <a href="<?= BASE_URL ?>/auth/profile.php"

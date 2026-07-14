@@ -45,9 +45,13 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
     <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700">Đăng nhập</button>
   </form>
+  <p class="text-sm text-slate-500 mt-4 text-center">
+    <a href="<?= BASE_URL ?>/auth/quenmk.php" class="text-indigo-600">Quên mật khẩu</a>
+  </p>
 
   <p class="text-sm text-slate-500 mt-4 text-center">
-    Chưa có tài khoản? <a href="<?= BASE_URL ?>/auth/register.php" class="text-indigo-600">Đăng ký</a>
+    Chưa có tài khoản? <a href="<?= BASE_URL ?>/auth/dangky.php" class="text-indigo-600">Đăng ký</a>
   </p>
+
 </div>
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>
